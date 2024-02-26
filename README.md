@@ -1,4 +1,4 @@
-# Handpose
+# Handpaint
 
 Little Project to get to use the tensorflow.js - Framework
 
