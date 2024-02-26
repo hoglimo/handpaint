@@ -1,7 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
 import React, {useRef} from 'react';
-import * as tf from '@tensorflow/tfjs';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
 import {drawHand, drawShape} from "./utilities";
@@ -18,7 +17,7 @@ class Cycler {
     return this._items[this._index];
   }
   next() {
-    if (this._index == this._items.length -1) {
+    if (this._index === this._items.length -1) {
       this._index = 0;
     } else {
       this._index++;
