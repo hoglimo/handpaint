@@ -2,6 +2,8 @@
 import './App.css';
 import React, {useRef} from 'react';
 import * as handpose from '@tensorflow-models/handpose';
+import '@tensorflow/tfjs-backend-cpu';
+import '@tensorflow/tfjs-backend-webgl';
 import Webcam from 'react-webcam';
 import {drawHand, drawShape} from "./utilities";
 import Navbar from './components/Navbar';
