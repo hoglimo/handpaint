@@ -109,23 +109,27 @@ export function drawShape(drawCtx,drawPoint) {
             drawTriangle(drawCtx,drawPoint);
             break;
         case 'squareNav':
-            //
+            drawRectangle(drawCtx,drawPoint,15);
             break;
         case 'rectangleNav':
-            //
+            drawRectangle(drawCtx,drawPoint);
             break;            
         case 'pointNav':
-            //
+            drawCircle(drawCtx,drawPoint,5);
             break;   
         default:
             //              
     }
 }
 
-function drawCircle(drawCtx,drawPoint) {
+function drawCircle(drawCtx,drawPoint,diameter) {
     drawCtx.beginPath();
-    // the third parameter is the width of the circle
-    drawCtx.arc(drawPoint.getXvalue(), drawPoint.getYvalue(), 15, 0, 3*Math.PI);
+    if (typeof diameter === "undefined") {    
+        // the third parameter is the width of the circle
+        drawCtx.arc(drawPoint.getXvalue(), drawPoint.getYvalue(), 15, 0, 3*Math.PI);
+    }
+    // diameter is given
+    drawCtx.arc(drawPoint.getXvalue(), drawPoint.getYvalue(), diameter, 0, 3*Math.PI);
     drawCtx.fillStyle = drawPoint.getColor();
     drawCtx.fill();                
 }
@@ -139,7 +143,17 @@ function drawTriangle(drawCtx,drawPoint) {
     drawCtx.closePath(); // Close the path to form a triangle
     drawCtx.fillStyle = drawPoint.getColor(); // Set the fill color
     drawCtx.fill(); // Fill the triangle with the color
-    drawCtx.strokeStyle = 'black'; // Set the stroke color
-    drawCtx.lineWidth = 2; // Set the line width
-    drawCtx.stroke(); // Draw the outline of the triangle
+    //drawCtx.strokeStyle = 'black'; // Set the stroke color
+    //drawCtx.lineWidth = 2; // Set the line width
+    //drawCtx.stroke(); // Draw the outline of the triangle
+}
+
+function drawRectangle(drawCtx,drawPoint,edgeLength) {
+    drawCtx.fillStyle = drawPoint.getColor();
+    if (typeof edgeLength === "undefined") {
+        // Parameters: x-coordinate, y-coordinate, width, height
+        drawCtx.fillRect(drawPoint.getXvalue(), drawPoint.getYvalue(), 30, 23);
+    }
+    // Parameters: x-coordinate, y-coordinate, width, height        
+    drawCtx.fillRect(drawPoint.getXvalue(), drawPoint.getYvalue(), edgeLength, edgeLength);    
 }
